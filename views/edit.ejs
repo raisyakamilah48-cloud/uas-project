@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Produk</title>
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="bg-base-200">
+
+<%- include('partials/navbar') %>
+
+<div class="flex justify-center py-10">
+  <div class="card w-full max-w-md bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4">Edit Produk ✏️</h2>
+
+      <form action="/edit-product/<%= produk.id %>" method="POST" class="space-y-4">
+        <input type="text" name="nama" value="<%= produk.nama %>" class="input input-bordered w-full">
+        <input type="number" name="harga" value="<%= produk.harga %>" class="input input-bordered w-full">
+        <input type="number" name="stock" value="<%= produk.stock %>" class="input input-bordered w-full">
+
+        <div class="flex justify-between">
+          <a href="/product" class="btn btn-ghost">Batal</a>
+          <button class="btn btn-primary">Update</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+</body>
+</html>

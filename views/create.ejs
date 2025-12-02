@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tambah Produk</title>
+  <link rel="stylesheet" href="/css/output.css" />
+</head>
+<body class="bg-base-200 text-base-content">
+  <%- include('partials/navbar') %>
+
+  <div class="flex justify-center py-10">
+    <div class="card w-full max-w-md bg-base-100 shadow-xl">
+      <div class="card-body">
+
+        <h2 class="card-title text-2xl font-bold mb-5 text-center">
+          Tambah Produk 🛍️
+        </h2>
+
+        <!-- FORM -->
+        <form action="/create-product"
+              method="POST"
+              enctype="multipart/form-data"
+              class="space-y-4">
+
+          <div>
+            <label class="label-text font-semibold">Nama Produk</label>
+            <input type="text"
+                   name="name"
+                   class="input input-bordered w-full"
+                   placeholder="Masukkan nama produk"
+                   required />
+          </div>
+
+          <div>
+            <label class="label-text font-semibold">Harga</label>
+            <input type="number"
+                   name="harga"
+                   class="input input-bordered w-full"
+                   placeholder="Masukkan harga"
+                   required />
+          </div>
+
+          <div>
+            <label class="label-text font-semibold">Stok</label>
+            <input type="number"
+                   name="stock"
+                   class="input input-bordered w-full"
+                   placeholder="Masukkan stok"
+                   required />
+          </div>
+
+          <!-- ✅ UPLOAD GAMBAR -->
+          <div>
+            <label class="label-text font-semibold">Gambar Produk</label>
+            <input type="file"
+                   name="gambar"
+                   accept="image/*"
+                   class="file-input file-input-bordered w-full"
+                   required />
+          </div>
+
+          <div class="flex justify-between items-center pt-4">
+            <a href="/product" class="btn btn-ghost">⬅️ Kembali</a>
+            <button type="submit" class="btn btn-primary">
+              💾 Simpan Produk
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

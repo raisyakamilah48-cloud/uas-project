@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Produk 💫</title>
+  <link rel="stylesheet" href="/css/output.css" />
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="min-h-screen bg-base-200 px-6 py-10">
+
+    <!-- JUDUL -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-extrabold text-primary mb-2">
+        🧸 Daftar Produk Boneka
+      </h1>
+      <p class="text-base-content opacity-70">
+        Temukan boneka lucu favoritmu 💖
+      </p>
+    </div>
+
+    <!-- GRID PRODUK -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
+
+      <% if (produk && produk.length > 0) { %>
+        <% produk.forEach(p => { %>
+
+          <div class="card w-72 bg-base-100 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+
+            <!-- GAMBAR -->
+            <figure class="pt-8">
+              <img
+                src="<%= p.gambar %>"
+                alt="<%= p.nama %>"
+                class="w-40 h-40 object-cover rounded-xl border"
+              />
+            </figure>
+
+            <!-- BODY -->
+            <div class="card-body items-center text-center p-6">
+              <h2 class="card-title text-lg font-bold">
+                <%= p.nama %>
+              </h2>
+
+              <!-- HARGA -->
+              <div class="badge badge-secondary badge-lg my-2">
+                Rp <%= Number(p.harga).toLocaleString('id-ID') %>
+              </div>
+
+              <!-- STOK -->
+              <p class="text-sm opacity-70">
+                Stok: <%= p.stock %>
+              </p>
+
+              <!-- ACTION CRUD -->
+              <div class="card-actions mt-4 flex gap-2">
+
+  <!-- DETAIL (opsional) -->
+  <a href="/product/<%= p.id %>" class="btn btn-info btn-sm">
+  Detail
+</a>
+
+
+  <!-- EDIT -->
+  <a href="/edit-product/<%= p.id %>" class="btn btn-warning btn-sm">
+  Edit
+</a>
+
+  <!-- DELETE (WAJIB FORM) -->
+  <form action="/delete-product/<%= p.id %>" method="POST"
+      onsubmit="return confirm('Yakin hapus produk ini?')">
+  <button class="btn btn-error btn-sm">Hapus</button>
+</form>
+
+</div>
+
+            </div>
+          </div>
+
+        <% }) %>
+      <% } else { %>
+
+        <!-- KALAU KOSONG -->
+        <div class="col-span-full">
+          <div class="alert alert-warning shadow-lg max-w-md mx-auto">
+            <span>😢 Tidak ada produk ditemukan</span>
+          </div>
+        </div>
+
+      <% } %>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

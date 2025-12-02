@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Ichacantik</title>
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="bg-base-100 text-base-content">
+  <%- include('partials/navbar') %>
+
+  <section class="hero min-h-screen bg-base-100">
+    <div class="hero-content flex-col lg:flex-row-reverse gap-10">
+      <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+           class="max-w-sm rounded-2xl shadow-2xl transition hover:scale-105" />
+      <div class="max-w-lg">
+        <h1 class="text-5xl font-bold text-primary mb-4">Hai, <%= nama %>! 👋</h1>
+        <p class="text-lg text-gray-600 leading-relaxed mb-6">
+          Selamat datang di website produk Ichacantik 🌸  
+          Lihat daftar produkmu, atau tambahkan produk baru dengan tampilan yang menawan.
+        </p>
+        <div class="space-x-3">
+          <a href="/product" class="btn btn-primary">Lihat Produk</a>
+          <a href="/about" class="btn btn-outline">Tentang Aku</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
